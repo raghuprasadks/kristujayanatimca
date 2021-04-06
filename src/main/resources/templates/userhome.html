@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout">
+
+<head>
+<title>User Home</title>
+<style>
+.mycls{
+		border: 2px solid red;
+		height: 600px;
+		width: 48%;
+		padding:20px;
+		display: inline-block;
+		margin: auto;
+	}
+	</style>
+
+</head>
+<body>
+	<div layout:fragment="content">
+		<p>
+			Welcome <span sec:authentication="principal.username">User</span>
+		</p>
+		<p>
+			<a th:href="@{/logout}">Logout</a>
+		</p>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<h3>You will see this only if you are ADMIN</h3>
+			<p>
+				<a th:href="@{/admin/home}">Admin Home</a>
+			</p>
+		</div>
+		<!-- 
+		<h3>Form with CSRF Token</h3>
+		<form th:action="@{/messages}" method="post">
+			<textarea name="content" cols="50" rows="5"></textarea>
+			<br>
+			<input type="submit" value="Submit" />
+		</form>
+
+		<div>
+		<br>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Messages
+				</div>
+
+				<p th:each="msg: ${msgs}" th:text="${msg.content}"></p>
+			</div>
+
+		</div> -->
+		
+		<div class="mycls" th:each="course : ${courses}">
+    
+      <h2 th:text="${'Course Name : ' + course.name}">Course 1</h2>
+      <h3 th:text="${'Description :' + course.desc}">Description</h3>
+ <h3 th:text="${'Duration : ' + course.duration}">Duration</h3>
+ <h3 th:text="${'Price : ' + course.price}">Price</h3>
+ <iframe width="450" height="350" th:src="@{https://www.youtube.com/embed/{url} (url=${course.videourl})}"   frameborder="0" alt="no video attached" allowfullscreen="1"></iframe>
+    <button>More</button><button>Buy</button>
+    
+    
+    
+</div>
+	</div>
+
+</body>
+
+</html>
