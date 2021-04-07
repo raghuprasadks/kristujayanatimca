@@ -1,0 +1,8 @@
+Step 1: Download the code from git https://github.com/raghuprasadks/kristujayanatimca
+Step 2 : Unzip and extract the code
+Step 3 : Import pom under ONLINE-GARMENTS-DEAL as a maven project
+Step 4 : Execute the database script under Database folder
+Step 5 : Login with the user id : Admin123 password : Admin@123
+Check for other users by looking into login table
+
+happy learning
